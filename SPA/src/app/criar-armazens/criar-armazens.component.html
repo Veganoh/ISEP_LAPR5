@@ -1,0 +1,84 @@
+<div class="content-card">
+    <div class="card-header">
+        <h1>Criar Armazem</h1>
+
+        <span>
+            Aqui é possível criar um Armazem!
+        </span>
+    </div> 
+    <div class="form-container">
+        <form [formGroup]="profileForm" (ngSubmit)="criarArmazem()" autocomplete="off">
+            <div class="input-group">
+                <div class="input-box">
+
+                    <label for="identificador">
+                        Identificador
+                    </label>
+
+                    <label *ngIf="profileForm.controls['identificador'].invalid && profileForm.controls['identificador'].touched" 
+                        class = "error"> O identificador de um Armazem tem de ter 3 caracteres alfanuméricos
+                    </label>
+
+                    <input id="identificador" type="text" formControlName="identificador" placeholder="ex: 001, M01, 6Fe">
+                    
+                </div>
+
+                <div class="input-box">
+                    <label for="designacao">Designacao: </label>
+
+                    <label *ngIf="profileForm.controls['designacao'].invalid && profileForm.controls['designacao'].touched" 
+                        class = "error"> A designação de um armazem não pode ser vazia nem maior que 50 caracteres
+                    </label>
+
+                    <input id="designacao" type="text" formControlName="designacao" placeholder="designacao">
+                </div>
+
+                <div class="input-box">
+                    <label for="endereco">Endereco </label>
+
+                    <label *ngIf="profileForm.controls['endereco'].invalid && profileForm.controls['endereco'].touched" 
+                        class = "error"> Este formato de endeço não é suportado
+                    </label>
+
+                    <input id="endereco" type="text" formControlName="endereco" placeholder="endereco">
+                </div>
+
+                <div class="input-box">
+                    <label for="latitude">Latitude </label>
+
+                    <label *ngIf="profileForm.controls['latitude'].invalid" 
+                        class = "error"> Latitude tem de estar entre -90 e 90 graus
+                    </label>
+
+                    <input id="latitude" type="number" formControlName="latitude" placeholder="latitude">
+                </div>
+
+                <div class="input-box">
+                    <label for="longitude">Longitude </label>
+
+                    <label *ngIf="profileForm.controls['longitude'].invalid" 
+                        class = "error"> Longitude tem de estar entre -180 e 180 graus
+                    </label>
+
+                    <input id="longitude" type="number" formControlName="longitude" placeholder="longitude">
+                </div>
+
+                <div class="input-box">
+                    <label for="altitude">Altitude </label>
+
+                    <label *ngIf="profileForm.controls['altitude'].invalid" 
+                        class = "error"> A altitude de um armazem não pode ser negativa
+                    </label>
+
+                    <input id="altitude" type="number" formControlName="altitude"  placeholder="altitude">
+                </div>
+            </div>
+            
+            <button type="submit" [disabled]="!profileForm.valid"><a>Criar Armazém</a></button>
+        </form>
+    </div>
+    <div *ngIf="sucesso">
+        <h3>  Armazem Guardado </h3>
+        <a class="close" (click)="fecharAlerta()">&times;</a>
+    </div>
+</div>

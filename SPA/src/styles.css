@@ -1,0 +1,386 @@
+/* You can add global styles to this file, and also import other style files */
+
+::ng-deep :root {
+    font-size: 16px;
+    font-family: 'Quicksand';
+    --text-primary: #b6b6b6;
+    --text-secondary: #ececec;
+    --bg-primary: #23232e;
+    --bg-secondary: #141418;
+    --bg-content-primary: #F4F6FA;
+    --bg-content-secondary: white;
+    --highlight-light: #30C5FF;
+    --highlight-dark: #1084B3;
+    --transition-speed: 200ms;
+}
+
+html,body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-content-primary);
+}
+
+body::-webkit-scrollbar {
+    width: 0.3rem;
+}
+
+body::-webkit-scrollbar-track {
+    background: #1e1e24;
+    border-radius: 2rem;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: var(--highlight-light);
+    border-radius: 2rem;
+}
+
+.content-card {
+    margin: auto;
+    width: 100%;
+    box-sizing: border-box;
+    height: fit-content;
+    padding: 1rem;
+    background-color: white;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: 5px;
+}
+
+.card-header {
+    margin-bottom: 2rem;
+}
+
+.card-header h1::after {
+    content: '';
+    display: block;
+    width: 6rem;
+    height: 0.4rem;
+    background-color: var(--highlight-light);
+    margin: 0 auto;
+    position: absolute;
+    border-radius: 10px;
+}
+
+.table-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.table-header {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    font-size: 1.1rem;
+    gap: 0.5rem;
+}
+
+.table-header label {
+    padding: 0 0.5rem;
+}
+
+.table-header input {
+    border-radius: 5px;
+    padding: 0.3rem;
+    width: 12rem;
+}
+
+.table-footer {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    font-size: 1.1rem;
+}
+
+.table-footer label {
+    text-align: center;
+    font-size: 1.25rem;
+    color: var(--bg-primary);
+    padding: 1rem;
+}
+
+.table-container .nav-listagem {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.nav-listagem a {
+    border-radius: 100%;
+    width: 2.5rem;
+    height: 2.5rem;
+    position: relative;
+    cursor: pointer;
+    transition: 200ms ease;
+}
+
+.nav-listagem a:active {
+    background-color: var(--text-primary);
+}
+
+.nav-listagem a.disabled {
+    opacity: 0.2;
+    cursor: initial;
+}
+
+.nav-listagem a.disabled:active {
+    background-color: white;
+}
+
+.nav-listagem .first-page div:first-child{
+    width: 0.5rem;
+    height: 0.5rem;
+    position: absolute;
+    left: 45%;
+    top:35%;
+    transform: rotate(135deg);
+    border: solid black;
+    border-width: 0 0.2rem 0.2rem 0;
+}
+
+.nav-listagem .first-page div:last-child{
+    width: 1rem;
+    height: 1rem;
+    position: absolute;
+    left: 25%;
+    top:50%;
+    transform: translate(0, -50%);
+    border: solid black;
+    border-width: 0 0 0 0.2rem;
+}
+
+.nav-listagem .prev-page div{
+    width: 0.5rem;
+    height: 0.5rem;
+    position: absolute;
+    left: 40%;
+    top:35%;
+    transform: rotate(135deg);
+    border: solid black;
+    border-width: 0 0.2rem 0.2rem 0;
+}
+
+.nav-listagem .last-page div:first-child{
+    width: 0.5rem;
+    height: 0.5rem;
+    position: absolute;
+    right: 45%;
+    top:35%;
+    transform: rotate(-45deg);
+    border: solid black;
+    border-width: 0 0.2rem 0.2rem 0;
+}
+
+.nav-listagem .last-page div:last-child{
+    width: 1rem;
+    height: 1rem;
+    position: absolute;
+    right: 25%;
+    top:50%;
+    transform: translate(0, -50%);
+    border: solid black;
+    border-width: 0 0.2rem 0 0;
+}
+
+.nav-listagem .prox-page div{
+    width: 0.5rem;
+    height: 0.5rem;
+    position: absolute;
+    right: 40%;
+    top:35%;
+    transform: rotate(-45deg);
+    border: solid black;
+    border-width: 0 0.2rem 0.2rem 0;
+}
+
+table {
+    border: 1px solid var(--text-primary);
+    border-collapse: collapse;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    width: 100%;
+}
+
+table thead {
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+table th {
+    padding: 1rem 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    font-size: 0.7rem;
+    font-weight: 900;
+}
+
+table td {
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+table tr:nth-child(even) {
+    background-color: var(--bg-content-primary);
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1ch;
+    color: var(--bg-primary);
+}
+
+.form-container {
+    background-color: var(--bg-content-primary);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 3rem;
+    box-sizing: border-box;
+    border: 1px solid var(--text-primary);
+    border-radius: 5px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.form-container form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.input-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 1rem 0;
+    width: 70%;
+}
+
+.input-box {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.1rem;
+    width: 45%;
+}
+
+.input-box input, select {
+    margin: 0.6rem 0;
+    padding: 0.8rem 1.2rem;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 1px 1px 6px #0000001c;
+}
+
+.input-box input:hover, select:hover {
+    background-color: var(--bg-content-primary);
+}
+
+.input-box input:focus-visible, select:focus-visible {
+    outline: 1px solid var(--highlight-light);
+}
+
+.input-box label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #000000c0;
+}
+
+.input-box input:placeholder {
+    color: #000000be
+}
+
+
+.input-box input.ng-invalid.ng-touched {
+    border: rgb(255, 62, 62) 1px solid;
+}
+
+.input-box .error {
+    font-size: 0.75rem;
+    color: rgb(255, 62, 62);
+    margin-bottom: 0;
+}
+
+.table-input-box {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 0.2rem;
+    background-color: var(--bg-content-primary);
+    padding: 0 0.5rem;
+    border-radius: 10px;
+    border: 1px solid var(--text-primary);
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.table-input-box input, select {
+    margin: 0.6rem 0;
+    padding: 0.8rem 1.2rem;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 1px 1px 6px #0000001c;
+}
+
+.table-input-box input:hover, select:hover {
+    background-color: var(--bg-content-primary);
+}
+
+.table-input-box input:focus-visible, select:focus-visible {
+    outline: 1px solid var(--highlight-light);
+}
+
+.table-input-box label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #000000c0;
+}
+
+.table-input-box input:placeholder {
+    color: #000000be
+}
+
+.form-container button{
+    width: 30%;
+    margin-top: 2.5rem;
+    border: none;
+    background-color: var(--highlight-light);
+    border-radius: 10px;
+    padding: 0.62rem;
+    cursor: pointer;
+}
+
+.form-container button:hover{
+    background-color: var(--highlight-dark);
+}
+
+.form-container button:disabled, button[disabled] {
+    background-color: var(--highlight-dark);
+    opacity: 0.4;
+    cursor:initial;
+}
+
+.form-container button a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+

@@ -1,0 +1,54 @@
+<div class="content-card">
+    <div class="card-header">
+        <h1>Armazens</h1>
+
+        <span>
+            Aqui podemos ver todos os Armazens existentes de momento.
+        </span>
+    </div> 
+    
+    <div class="table-container">
+        <div class ="table-header">
+            <div class="table-input-box">
+                <label for="identificador">Identificador: </label>
+                <input id = "identificador" [(ngModel)]="idFilter" (input)="filter()"/>
+            </div>
+
+            <div class="table-input-box">
+                <label for="designacao">Designação: </label>
+                <input id = "designacao" [(ngModel)]="designacaoFilter" (input)="filter()"/>
+            </div>
+    </div>
+
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Identificador</th>
+                    <th>Designação</th>
+                    <th>Endereço</th>
+                    <th>Latitude</th>
+                    <th>Longitude</th>
+                    <th>Altitude</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let armazem of armazens" [class.ativo]='armazem.isAtivo' [class.inativo]='!armazem.isAtivo'>
+                    
+                    
+                    <td>{{armazem.id.toString()}}</td>
+                    <td>{{armazem.designacao.value}}</td>
+                    <td>{{armazem.endereco.value}}</td>
+                    <td>{{armazem.coordenadas.latitude}}</td>
+                    <td>{{armazem.coordenadas.longitude}}</td>
+                    <td>{{armazem.altitude.value}}</td>
+                    <td>
+                        <button *ngIf="armazem.isAtivo" (click)="InibirOuAtivarArmazem(armazem)">Inibir</button>
+                        
+                        <button *ngIf="!armazem.isAtivo" (click)="InibirOuAtivarArmazem(armazem)">Ativar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

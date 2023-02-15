@@ -1,0 +1,22 @@
+.table-header .table-input-box:first-child {
+    margin-right: auto;
+}
+
+
+.inativo button{
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    padding: 0.62rem;
+    cursor: pointer;
+    background-color: rgba(215, 17, 17, 0.395);
+}
+
+.ativo button{
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    padding: 0.62rem;
+    cursor: pointer;
+    background-color: rgba(21, 230, 21, 0.548);
+}

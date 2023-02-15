@@ -1,0 +1,97 @@
+<div class="content-card">
+    <div class="card-header">
+            <h1>Empacotamentos</h1>
+
+            <span>
+                Aqui podemos ver todos os Empacotamentos existentes de momento.
+            </span>
+        </div> 
+        
+        <div class="table-container">
+            <div class ="table-header">
+                <div class="table-input-box">
+                    <label>
+                        Mostrar
+                    </label>
+
+                    <select id="num-por-pagina" [(ngModel)]="numPorPagina" (change)="mudarNumPorPagina()">    
+                        <option [ngValue]="3">3</option>
+                        <option [ngValue]="5">5</option>
+                        <option [ngValue]="7">7</option>
+                        <option [ngValue]="10">10</option>
+                    </select>
+
+                    <label>
+                        Enpacotamentos de cada vez
+                    </label>
+                </div>
+
+                <div class="table-input-box">
+                    <label>
+                        Entrega
+                    </label>
+                    <input placeholder="Filtrar..." id = "entrega" [(ngModel)] = "entregaFilter" (input)="aplicarFiltro()"/>
+                </div>
+
+                <div class="table-input-box">
+                    <label>
+                        Matricula
+                    </label>
+                    <input placeholder="Filtrar..." id = "matricula" [(ngModel)] = "matriculaFilter" (input)="aplicarFiltro()"/>
+                </div>
+        </div>
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Entrega</th>
+                    <th>Matricula</th>
+                    <th>Tempo de Colocação</th>
+                    <th>Tempo de Retirada </th>
+                    <th>Coordenada X</th>
+                    <th>Coordenada Y</th>
+                    <th>Coordenada Z</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let enpacotamento of listaEnpacotamentosDto">
+                    <td>{{enpacotamento.entrega}}</td>
+                    <td>{{enpacotamento.matricula}}</td>
+                    <td>{{enpacotamento.tempoColocacao}}</td>
+                    <td>{{enpacotamento.tempoRetirada}}</td>
+                    <td>{{enpacotamento.coordenadaX}}</td>
+                    <td>{{enpacotamento.coordenadaY}}</td>
+                    <td>{{enpacotamento.coordenadaZ}}</td>
+                    </tr>
+            </tbody>
+        </table>
+        <div class="table-footer">
+            <label>
+                A mostrar {{numPorPagina}} de {{countTotal}} Enpacotamentos
+            </label>
+
+            <nav class="nav-listagem">
+                <a id="first-page" class="first-page" ng-disabled="btnPrevDesativado" [class.disabled]="btnPrevDesativado" (click)="primeiraPagina()">
+                    <div></div>
+                    <div></div>
+                </a>
+
+                <a id="prev-page" class="prev-page" ng-disabled="btnPrevDesativado" [class.disabled]="btnPrevDesativado" (click)="prevPagina()">
+                    <div></div>
+                </a>
+
+                <label>
+                    Página {{paginaAtual + 1}} de {{numTotalPaginas}}
+                </label>
+
+                <a id="prox-page" class="prox-page" ng-disabled="btnProxDesativado" [class.disabled]="btnProxDesativado" (click)="proxPagina()">
+                    <div></div>
+                </a>
+
+                <a id="last-page" class="last-page" ng-disabled="btnProxDesativado" [class.disabled]="btnProxDesativado" (click)="ultimaPagina()">
+                    <div></div>
+                    <div></div>
+                </a>
+            </nav>
+        </div>
+    </div>
+</div>

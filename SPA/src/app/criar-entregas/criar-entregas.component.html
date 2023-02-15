@@ -1,0 +1,61 @@
+<div class="content-card">
+    <div class="card-header">
+        <h1>Criar Entrega</h1>
+
+        <span>
+            Aqui é possível criar uma Entrega!
+        </span>
+    </div> 
+    <div class="form-container">
+        <form [formGroup]="profileForm" (ngSubmit)="criarEntrega()" autocomplete="off">
+            <div class="input-group">
+
+                <div class="input-box">
+                    <label for="data">Data: </label>
+                    <input id="data" type="text" formControlName="data" placeholder="dd-mm-yyyy">
+                    <label *ngIf="profileForm.controls['data'].invalid && profileForm.controls['data'].touched" 
+                        class = "error"> A data de uma entrega tem que ter o formato dd-mm-yyyy
+                    </label>
+                </div>
+
+                <div class="input-box">
+                    <label for="peso">Peso </label>
+                    <input id="peso" type="number" formControlName="peso" placeholder="peso">
+                    <label *ngIf="profileForm.controls['peso'].invalid" 
+                        class = "error"> O peso de uma entrega tem que ser maior que 0
+                    </label>
+                </div>
+
+                <div class="input-box">
+                    <label for="arm_id">Id do armazem </label>
+                    <input id="arm_id" type="text" formControlName="arm_id" placeholder="ex: 001, M01, 6Fe">
+                    <label *ngIf="profileForm.controls['arm_id'].invalid && profileForm.controls['arm_id'].touched" 
+                        class = "error"> O identificador de um Armazem tem de ter 3 caracteres alfanuméricos
+                    </label>
+                </div>
+
+                <div class="input-box">
+                    <label for="tempo_col">Tempo Colocação </label>
+                    <input id="tempo_col" type="number" formControlName="tempo_col" placeholder="Tempo de colocação">
+                    <label *ngIf="profileForm.controls['tempo_col'].invalid" 
+                        class = "error"> O tempo de colocação de uma entrega tem que ser maior que 0
+                    </label>
+                </div>
+
+                <div class="input-box">
+                    <label for="tempo_ret">Tempo Retirada </label>
+                    <input id="tempo_ret" type="number" formControlName="tempo_ret"  placeholder="Tempo de retirada">
+                    <label *ngIf="profileForm.controls['tempo_ret'].invalid" 
+                        class = "error"> O tempo de retirada de uma entrega tem que ser maior que 0
+                    </label>
+                </div>
+            </div>
+            
+            <button type="submit" [disabled]="!profileForm.valid"><a>Criar Entrega</a></button>
+        </form>
+    </div>
+    <div *ngIf="sucesso">
+        <h3>  Entrega Guardada </h3>
+        <a class="close" (click)="fecharAlerta()">&times;</a>
+    </div>
+</div>

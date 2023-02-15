@@ -1,0 +1,104 @@
+<div class="content-card">
+    <div class="card-header">
+        <h1>Viagens</h1>
+
+        <span>
+            Aqui podemos ver todas as viagens existentes de momento.
+        </span>
+    </div> 
+    
+    <div class="table-container">
+        <div class="table-header">
+            <div class="table-input-box">
+                <label>
+                    Mostrar
+                </label>
+
+                <select id="num-por-pagina" [(ngModel)]="numPorPagina" (change)="mudarNumPorPagina()">    
+                    <option [ngValue]="10">10</option>
+                    <option [ngValue]="15">15</option>
+                    <option [ngValue]="20">20</option>
+                    <option [ngValue]="25">25</option>
+                    <option [ngValue]="30">30</option>
+                </select>
+
+                <label>
+                    Viagens de cada vez
+                </label>
+            </div>
+
+            <div class="table-input-box">
+                <label for="identificador">Matricula:</label>
+                <select id="identificador" type="text" [(ngModel)]="idFilter" (ngModelChange)="filter()">
+                    <option value="">Escolha a matricula do camiao</option>
+                    <option *ngFor="let rota of listaRotasDto" >{{rota.camiao}}</option>
+                </select>
+            </div>
+            <div class="table-input-box">
+                <label for="sort">Ordenar por:</label>
+                <select id="sort" type="text" [(ngModel)]="sortBy" (ngModelChange)="atualizarDados()">
+                    <option value="" disabled selected hidden>Escolha uma opção</option>
+                    <option value="v0">sem ordenar</option>
+                    <option value="data">Data</option>
+                    <option value="matricula">Matricula</option>
+                </select>
+            </div>
+            <div class="table-input-box">
+                <label for="dataInicio">Data Inicio: </label>
+                <input id="dateInicio" type="date" [(ngModel)]="dataInicioFilter" (input)="filter()"/>
+            </div>
+            <div class="table-input-box">
+                <label for="dataFim">Data Fim: </label>
+                <input id="dateFim" type="date" [(ngModel)]="dataFimFilter" (input)="filter()"/>
+            </div>
+            
+            
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Camiao</th>
+                    <th>Data</th>
+                    <th>Rota</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let rota of listaRotasDto">
+                    <td>{{rota.camiao}}</td>
+                    <td>{{rota.data}}</td>
+                    <td>{{rota.rota}}</td>
+                </tr>
+            </tbody>
+            
+        </table>
+        <div class="table-footer">
+            <label>
+                A mostrar {{numPorPagina}} de {{countTotal}} Viagens
+            </label>
+
+            <nav class="nav-listagem">
+                <a id="first-page" class="first-page" ng-disabled="btnPrevDesativado" [class.disabled]="btnPrevDesativado" (click)="primeiraPagina()">
+                    <div></div>
+                    <div></div>
+                </a>
+
+                <a id="prev-page" class="prev-page" ng-disabled="btnPrevDesativado" [class.disabled]="btnPrevDesativado" (click)="prevPagina()">
+                    <div></div>
+                </a>
+
+                <label>
+                    Página {{paginaAtual + 1}} de {{numTotalPaginas}}
+                </label>
+
+                <a id="prox-page" class="prox-page" ng-disabled="btnProxDesativado" [class.disabled]="btnProxDesativado" (click)="proxPagina()">
+                    <div></div>
+                </a>
+
+                <a id="last-page" class="last-page" ng-disabled="btnProxDesativado" [class.disabled]="btnProxDesativado" (click)="ultimaPagina()">
+                    <div></div>
+                    <div></div>
+                </a>
+            </nav>
+        </div>
+    </div>
+</div>

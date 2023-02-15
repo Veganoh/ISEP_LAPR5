@@ -1,0 +1,70 @@
+<div class="content-card">
+    <div class="card-header">
+        <h1>Criar Empacotamento</h1>
+
+        <span>
+            Aqui é possível criar um Empacotamento!
+        </span>
+    </div> 
+    <div class="form-container">
+        <form [formGroup]="profileForm" class="forms" autocomplete="off">
+            
+                <div class="input-box">
+                    <label for="entrega">Entrega:</label>
+                    <select id="entrega" type="text" formControlName="entrega">
+                        <option value="" disabled selected>Escolha uma entrega</option>
+                        <option *ngFor="let entrega of entregasFiltradas" >{{entrega.identificador}}</option>
+                    </select> 
+                </div>
+
+                <div class="input-box">
+                    <label for="matricula">Matricula</label>
+                    <input id="matricula" type="text" formControlName="matricula" placeholder="CA-10-10">
+                    <label *ngIf="profileForm.controls['matricula'].invalid && profileForm.controls['matricula'].touched" 
+                        class = "error"> Este formato de matricula não é suportado!
+                    </label>
+                </div>
+
+                <div class="input-box">
+                    <label for="tempoColocacao">Tempo de Colocação </label>
+                    <input id="tempoColocacao" type="number" formControlName="tempoColocacao" placeholder="tempoColocacao">
+                    <label *ngIf="profileForm.controls['tempoColocacao'].invalid" 
+                        class = "error"> O tempo de colocação tem de ser positivo!
+                    </label>
+                </div>
+                <div class="input-box">
+                    <label for="tempoRetirada">Tempo de Retirada </label>
+
+                    <input id="tempoRetirada" type="number" formControlName="tempoRetirada" placeholder="tempoRetirada">
+                    <label *ngIf="profileForm.controls['tempoRetirada'].invalid" 
+                        class = "error"> O tempo de retirada tem de ser positivo!
+                    </label>
+                </div>
+                <div class="input-box">
+                    <label for="coordenadaX">Coordenada X </label>
+                    <input id="coordenadaX" type="number" formControlName="coordenadaX"  placeholder="coordenadaX">
+                    <label *ngIf="profileForm.controls['coordenadaX'].invalid" 
+                        class = "error"> A coordenada X tem de estar entre 1 e 9! 
+                    </label>
+                </div>
+                <div class="input-box">
+                    <label for="coordenadaY">Coordenada Y </label>
+                    <input id="coordenadaY" type="number" formControlName="coordenadaY"  placeholder="coordenadaY">
+                    <label *ngIf="profileForm.controls['coordenadaY'].invalid" 
+                        class = "error"> A coordenada Y tem de estar entre 1 e 19! 
+                    </label>
+                </div>
+                <div class="input-box">
+                    <label for="coordenadaZ">Coordenada Z </label>
+                    <input id="coordenadaZ" type="number" formControlName="coordenadaZ"  placeholder="coordenadaZ">
+                    <label *ngIf="profileForm.controls['coordenadaZ'].invalid" 
+                        class = "error"> A coordenada Z tem de estar entre 1 e 7! 
+                    </label>
+                </div>
+                <button type="button" (click)="criarEnpacotamento()">Criar Empacotamento</button>
+        </form>
+    </div>
+    <div *ngIf="sucesso">
+        <h3>Empacotamento Guardado</h3>
+    </div>
+</div>

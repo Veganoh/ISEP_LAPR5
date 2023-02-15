@@ -1,0 +1,93 @@
+@import url("https://fonts.googleapis.com/css?family=Quicksand&display=swap");
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+* {
+  font-family: Quicksand;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield; /* Firefox */
+  appearance: textfield;
+}
+
+input.ng-invalid.ng-touched {
+  border: red 1px solid;
+  background-color: rgb(237, 150, 158);
+}
+
+.forms {
+  margin: 30px;
+}
+
+.forms input {
+  height: 40px;
+  width: 400px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.field {
+  margin-top: 40px;
+  margin-bottom: 0px;
+}
+
+#field > .erro div {
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+button {
+  margin-top: 50px;
+}
+
+.error {
+  color: red;
+}
+
+.alert {
+  width: 40%;
+  margin: 20px auto;
+  padding: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  position: relative;
+  border-radius: 5px;
+  box-shadow: 0 0 15px 5px #ccc;
+}
+
+.success-alert {
+  background-color: #a8f0c6;
+  border-left: 5px solid #14a04e;
+}
+
+.success-alert,
+.close {
+  border-color: #14a04e;
+  color: #14a04e;
+}
+
+.close {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  opacity: 0.5;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 50%;
+  right: 15px;
+  top: 50%;
+  transform: translate(0,-50%);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.6em;
+  cursor: pointer;
+}

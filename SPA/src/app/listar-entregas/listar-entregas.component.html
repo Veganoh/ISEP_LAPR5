@@ -1,0 +1,63 @@
+
+<div class="content-card">
+    <div class="card-header">
+        <h1>Entregas</h1>
+
+        <span>
+            Aqui podemos ver todos as Entregas existentes de momento.
+        </span>
+    </div> 
+    
+    <div class="table-container">
+        <div class ="table-header">
+            <div class="table-input-box">
+                <label for="identificador">Id armazem:</label>
+                <select id="identificador" type="text" [(ngModel)]="idFilter" (ngModelChange)="filter()">
+                    <option value="">Escolha o id do armazem</option>
+                    <option *ngFor="let armazem of armazens" >{{armazem.id}}</option>
+                </select>
+            </div>
+            <div class="table-input-box">
+                <label for="sort">Ordenar por:</label>
+                <select id="sort" type="text" [(ngModel)]="sortBy" (ngModelChange)="OrderBy()">
+                    <option value="" disabled selected hidden>Escolha uma opção</option>
+                    <option value="v0">sem ordenar</option>
+                    <option value="data">Data</option>
+                    <option value="id_armazem">Armazem id</option>
+                    <option value="peso_entrega">Peso</option>
+                    <option value="tempo_colocacao">Tempo de colocação</option>
+                    <option value="tempo_retirada">Tempo de retirada</option>
+                </select>
+            </div>
+            <div class="table-input-box">
+                <label for="dataInicio">Data Inicio: </label>
+                <input id="dateInicio" type="date" [(ngModel)]="dataInicioFilter" (input)="filter()"/>
+            </div>
+            <div class="table-input-box">
+                <label for="dataFim">Data Fim: </label>
+                <input id="dateFim" type="date" [(ngModel)]="dataFimFilter" (input)="filter()"/>
+            </div>
+    </div>
+
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Data</th>
+                <th>Peso Entrega</th>
+                <th>Id Armazem</th>
+                <th>Tempo Colocação</th>
+                <th>Tempo retirada</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let entrega of entregas">
+                <td>{{entrega.data.getDateFormated()}}</td>
+                <td>{{entrega.peso.value}}</td>
+                <td>{{entrega.arm_id.value}}</td>
+                <td>{{entrega.tempo_col.value}}</td>
+                <td>{{entrega.tempo_ret.value}}</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+</div>

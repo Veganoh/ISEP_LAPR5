@@ -1,0 +1,85 @@
+<div class="content-card">
+    <div class="card-header">
+        <h1>Criar Utilizador</h1>
+
+        <span>
+            Aqui é possível criar um Utilizador!
+        </span>
+    </div> 
+    <div class="form-container">
+        <form [formGroup]="userForm" (ngSubmit)="criarUser()">
+            <div class="input-group">
+                <div class="input-box">
+
+                    <label for="primeiroNome">
+                        Primeiro Nome* 
+                    </label>
+    
+                    <label *ngIf="primeiroNome?.invalid"  class="error">
+                        {{primeiroNome?.errors?.['required'].error}}
+                    </label>
+
+                    <input id="primeiroNome" type="string" formControlName="primeiroNome" placeholder="Primeiro Nome..." required>
+                </div>
+
+                <div class="input-box">
+
+                    <label for="ultimoNome">
+                        Ultimo Nome* 
+                    </label>
+
+                    <label *ngIf="ultimoNome?.invalid"  class="error">
+                        {{ultimoNome?.errors?.['required'].error}}
+                    </label>
+
+                    <input id="ultimoNome" type="string" formControlName="ultimoNome" placeholder="Ultimo Nome..." required>
+
+                </div>
+
+                <div class="input-box">
+
+                    <label for="email">
+                         Email* 
+                    </label>
+
+                    <label *ngIf="email?.invalid"  class="error">
+                        {{email?.errors?.['required'].error}}
+                    </label>
+
+                    <input id="email" type="string" formControlName="email" placeholder="Email..." required>
+
+                </div>
+
+                <div class="input-box">
+
+                    <label for="telemovel">
+                        Telemóvel* 
+                   </label>
+
+                    <label *ngIf="telemovel?.invalid"  class="error">
+                        {{telemovel?.errors?.['required'].error}}
+                    </label>
+
+                    <input id="telemovel" type="string" formControlName="telemovel" placeholder="Telemóvel..." required>
+
+                </div>
+
+                <div class="input-box">
+                    <label for="role">Tipo de Utilizador:</label>
+                    <select id="role" type="text" formControlName="role">
+                        <option value="" disabled selected>Escolha um tipo de Utilizador </option>
+                        <option value="Administrador"> Administrador </option>
+                        <option value="Gestor de Logistica"> Gestor de Logística</option>
+                        <option value="Gestor de Armazens"> Gestor de Armazéns</option>
+                    </select> 
+                </div>
+            </div>
+
+             <button type="submit" [disabled]="!userForm.valid"><a>Criar Utilizador</a></button>
+        </form>
+    </div>
+    <div *ngIf="sucesso" class="alert success-alert">
+        <h3>Utilizador criado com sucesso!</h3>
+        <a class="close" (click)="fecharAlerta()">&times;</a>
+    </div>
+</div>

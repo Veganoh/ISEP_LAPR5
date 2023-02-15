@@ -1,0 +1,38 @@
+# This is an example Starter pipeline configuration
+# Use a skeleton to build, test and deploy using manual and parallel steps
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+
+# image: atlassian/default-image:3
+
+pipelines:
+  default:
+    - step:
+        name: "Build and Test GestaoArmazem "
+        image: mcr.microsoft.com/dotnet/sdk:6.0
+        script:
+          - cd GestaoArmazem
+          - dotnet test Tests
+          - dotnet restore
+          - dotnet build --no-restore --configuration Release
+    - step:
+        name: "Build and Test Logistica"
+        image: node:10.15.0
+        script:
+          - cd Logistica
+          - npm i -D jest typescript
+          - npm i -D ts-jest @types/jest
+          - npm i -g jest
+          - npm i jest
+          - npm test
+          - npm ci
+    - step:
+        name: "Build and test SPA (UI)"
+        image: node:16
+        script:
+          - cd SPA
+          - npm ci
+          - npm run build
+          - npm test
+        artifacts:
+          - node_modules/**

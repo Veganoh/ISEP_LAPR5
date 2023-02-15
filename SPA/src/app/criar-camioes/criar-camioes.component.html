@@ -1,0 +1,84 @@
+<div class="content-card">
+    <div class="card-header">
+        <h1>Criar Camião</h1>
+        <span>
+            Aqui é possível criar um Camião!
+        </span>
+    </div>
+    <div class="form-container">
+        <form [formGroup]="profileForm" class="forms" autocomplete="off">
+        <div class="input-box">
+            <div>
+                <label for="I">Identificador</label>
+            </div>
+            <input id="I" type="text" formControlName="id" placeholder="ex AA-00-00 00-00-AA 00-AA-00 AA-00-AA">
+            <label *ngIf="profileForm.controls['id'].invalid && profileForm.controls['id'].touched" 
+                class = "error">O id não respeita os modelos apresentados
+            </label>
+        </div>
+        <div class="input-box">
+            <div>
+                <label for="tara">Tara</label>
+            </div>
+            <input id="tara" type="number" formControlName="tara" placeholder="tara">
+            <label *ngIf="profileForm.controls['tara'].invalid && profileForm.controls['tara'].touched" 
+                class = "error">A tara de um camião não pode ser nula ou negativa
+            </label>
+        </div>
+        <div class="input-box">
+            <div>
+                <label for="capacidadeCargaTotal">Capacidade Carga Total</label>
+            </div>
+            <input id="capacidadeCargaTotal" type="number" formControlName="capacidadeCargaTotal" placeholder="capacidadeCargaTotal">
+            <label *ngIf="profileForm.controls['capacidadeCargaTotal'].invalid && profileForm.controls['capacidadeCargaTotal'].touched" 
+                class = "error">A capacidade de carga total de um camião não pode ser nula ou negativa
+            </label>
+        </div>
+        <div class="input-box">
+            <div>
+                <label for="camiaoBateria">Bateria</label>
+            </div>
+            <input id="camiaoBateria" type="number" formControlName="camiaoBateria" placeholder="camiaoBateria">
+            <label *ngIf="profileForm.controls['camiaoBateria'].invalid && profileForm.controls['camiaoBateria'].touched" 
+                class = "error">A bateria de um camião não pode ser nula ou negativa
+            </label>
+        </div>
+        <div class="input-box">
+            <div>
+                <label for="autonomiaCamiao">Autonomia</label>
+            </div>
+            <input id="autonomiaCamiao" type="number" formControlName="autonomiaCamiao" placeholder="autonomiaCamiao">
+            <label *ngIf="profileForm.controls['autonomiaCamiao'].invalid && profileForm.controls['autonomiaCamiao'].touched" 
+                class = "error">A autonomia de um camião não pode ser nula ou negativa
+            </label>
+        </div>
+        <div class="input-box">
+            <div>
+                <label for="carregamentoLento">Carregamento Lento</label>
+            </div>
+            <input id="carregamentoLento" type="number" formControlName="carregamentoLento" placeholder="carregamentoLento">
+            <label *ngIf="profileForm.controls['carregamentoLento'].invalid && profileForm.controls['carregamentoLento'].touched" 
+                class = "error">O carregamento lento de um camião não pode ser nulo ou negativo
+            </label>
+        </div>
+        <div class="input-box">
+            <div>
+                <label for="carregamentoRapido">Carregamento Rápido</label>
+            </div>
+            <input id="carregamentoRapido" type="number" formControlName="carregamentoRapido" placeholder="carregamentoRapido">
+            <label *ngIf="profileForm.controls['carregamentoRapido'].invalid && profileForm.controls['carregamentoRapido'].touched" 
+                class = "error">O carregamento rápido de um camião não pode ser nulo ou negativo
+            </label>
+        </div>
+        <button type="button" (click)="criarCamiao()"><a>Criar Camião</a></button>
+    </form>
+    <div>
+        
+    </div>
+    </div>
+    
+    <div>
+        <h3 *ngIf="sucesso">Camião Guardado</h3>
+
+    </div>
+</div>

@@ -1,0 +1,109 @@
+<div class="content-card">
+    <div class="card-header">
+        <h1>Criar Percurso</h1>
+
+        <span>
+            Aqui é possível criar um percruso!
+        </span>
+    </div> 
+    <div class="form-container">
+        <form [formGroup]="percursoForm" (ngSubmit)="criarPercurso()" >
+            <div class="input-group">
+                <div class="input-box">
+
+                    <label for="armazem-orig">
+                        Armazem Origem* 
+                    </label>
+
+                    <label *ngIf="armazemOrig?.invalid" class="error">
+                        {{armazemOrig?.errors?.['required'].error}}
+                    </label>
+            
+                    <select id="armazem-orig" formControlName="armazemOrig">    
+                        <option value="" disabled selected>Escolha o Armazem de Origem</option>
+                        <option *ngFor="let armazem of listaArmazens" [value]="armazem.identificador">
+                            {{armazem.designacao}}
+                        </option>
+                    </select>
+                </div>
+            
+                <div class="input-box">
+                
+                    <label for="armazem-dest">
+                        Armazem Destino* 
+                    </label>
+
+                    <label *ngIf="armazemDest?.invalid" class="error">
+                        {{armazemDest?.errors?.['required'].error}}
+                    </label>
+            
+                    <select id="armazem-dest" formControlName="armazemDest">
+                        <option value="" disabled selected>Escolha o Armazem de Origem</option>
+                        <option *ngFor="let armazem of listaArmazens" value="{{armazem.identificador}}">
+                            {{armazem.designacao}}
+                        </option>
+                    </select>
+                </div>
+                
+                <div class="input-box">
+                    <label for="distancia">
+                        Distância (em Km)*  
+                    </label>
+
+                    <label *ngIf="distancia?.invalid && distancia?.touched" class="error">
+                        {{distancia?.errors?.['distanciaInvalida'].error}}
+                    </label>
+
+                    <input id="distancia" type="number" formControlName="distancia" placeholder="Distância em Km..." (keypress)="numberOnly($event)" required>
+                </div>
+            
+                <div class="input-box">
+                    <label for="energia">
+                        Energia Gasta (em Kwh)* 
+                    </label>
+
+                    <label *ngIf="energia?.invalid && energia?.touched" class="error">
+                        {{energia?.errors?.['energiaInvalida'].error}}
+                    </label>
+
+                    <input id="energia" type="number" formControlName="energia" placeholder="Energia Gasta em Kwh..." (keypress)="numberOnly($event)" required>
+                </div>
+                
+                <div class="input-box">
+                    <label for="tempo">
+                        Tempo (em Minutos)* 
+                    </label>
+
+                    <label *ngIf="tempo?.invalid && tempo?.touched" class="error">
+                        {{tempo?.errors?.['tempoBaseInvalido'].error}}
+                    </label>
+
+                    <input id="tempo" type="number" formControlName="tempo" placeholder="Tempo total em minutos..." (keypress)="numberOnly($event)" required>
+                </div>
+            
+                <div class="input-box">
+                    <label for="tempo-extra">
+                        Tempo Extra (em Minutos) 
+                    </label>
+
+                    <label *ngIf="tempoExtra?.invalid && tempoExtra?.touched" class="error">
+                        {{tempoExtra?.errors?.['tempoExtraInvalido'].error}}
+                    </label>
+
+                    <input id="tempo-extra" type="number" formControlName="tempoExtra" placeholder="Tempo extra em minutos..." (keypress)="numberOnly($event)">
+                </div>
+            </div>
+
+            <button type="submit" [disabled]="!percursoForm.valid"><a>Criar Percurso</a></button>
+        </form>
+    </div>
+    <div *ngIf="sucesso" class="alert success-alert">
+        <h3>Percurso Criado com Sucesso</h3>
+        <a class="close" (click)="fecharAlerta()">&times;</a>
+    </div>
+</div>
+
+
+
+
+

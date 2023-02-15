@@ -1,0 +1,153 @@
+@import url("https://fonts.googleapis.com/css?family=Quicksand&display=swap");
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+* {
+  font-family: Quicksand;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield; /* Firefox */
+  appearance: textfield;
+}
+
+.field {
+  margin-top: 40px;
+  margin-bottom: 0px;
+}
+
+#field > .erro div {
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+.error {
+  color: red;
+}
+
+.alert {
+  width: 40%;
+  margin: 20px auto;
+  padding: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  position: relative;
+  border-radius: 5px;
+  box-shadow: 0 0 15px 5px #ccc;
+}
+
+.success-alert {
+  background-color: #a8f0c6;
+  border-left: 5px solid #14a04e;
+}
+
+.success-alert,
+.close {
+  border-color: #14a04e;
+  color: #14a04e;
+}
+
+.close {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  opacity: 0.5;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 50%;
+  right: 15px;
+  top: 50%;
+  transform: translate(0,-50%);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.6em;
+  cursor: pointer;
+}
+
+.table-header .table-input-box:first-child {
+    margin-right: auto;
+  }
+
+.graph-container {
+  width: 500px;
+  height: 500px;
+  background-color: #59deff;
+  border: 1px solid var(--text-primary);
+}
+
+.planeamento-form {
+  padding-left: 5em;
+  padding-right: 5em;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.forms {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.graph-full {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+
+.rota {
+  width: 100%;
+  text-align: center;
+  display: block;
+}
+
+
+button{
+  width: 30%;
+  margin-top: 2.5rem;
+  border: none;
+  background-color: var(--highlight-light);
+  border-radius: 10px;
+  padding: 0.62rem;
+  cursor: pointer;
+}
+
+button:hover{
+  background-color: var(--highlight-dark);
+}
+
+button:disabled, button[disabled] {
+  background-color: var(--highlight-dark);
+  opacity: 0.4;
+  cursor:initial;
+}
+
+button a {
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.nav-listagem {
+  padding: 0.5em;
+}
+
+.nav-listagem label {
+  margin-left: 1.5em;
+  margin-right: 1.5em;
+}

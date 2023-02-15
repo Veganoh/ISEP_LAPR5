@@ -1,0 +1,82 @@
+<div class="content-card">
+    <div class="card-header">
+        <h1>Obter Planeamento</h1>
+        <span>
+            Aqui é possível obter a rota para um dado camião num dado dia
+        </span>
+    </div>
+    <div class="form-container">
+        <form [formGroup]="profileForm" class="planeamento-form" autocomplete="off">
+            <div class="forms"> 
+                <div class="input-box">
+                    <div>
+                        <label for="camiao">Camião</label>
+                    </div>
+                    <input id="camiao" type="text" formControlName="camiao" placeholder="ex.CA-10-10">
+                    <label *ngIf="profileForm.controls['camiao'].invalid && profileForm.controls['camiao'].touched" 
+                        class = "error">O camião não existe
+                    </label>
+                </div>
+    
+                 
+                <div class="input-box">
+                    <div>
+                        <label for="data">Data </label>
+                    </div>
+                    <input type="date" id="data" formControlName="data">
+                </div>
+    
+                <div class="input-box">
+                    <label for="algoritmo">Algoritmo</label>
+                    <select id="algoritmo" type="number" formControlName="algoritmo">
+                        <option value="" disabled selected>Escolha um algoritmo </option>
+                        <option [ngValue] = 1> Custo mínimo </option>
+                        <option [ngValue] = 2> Heurística Peso </option>
+                        <option [ngValue] = 3> Heurística Tempo</option>
+                        <option [ngValue] = 4> Heurística Peso-Tempo</option>
+                        <option [ngValue] = 5> Heurística Genético</option>
+                        <option [ngValue] = 6> Heurística Simulado</option>
+                    </select> 
+                </div>
+
+                <button type="button" (click)="obterPlaneamento()" [disabled]="!profileForm.valid"><a>Obter Rota</a></button>
+            </div>
+            
+            <div class="graph-full">
+
+                <div class="rota" *ngIf = "rotas.length !== 0" >
+                    <nav class="nav-listagem" >
+    
+                        <a id="prev-page" class="prev-page" (click)="prevPagina()">
+                            <div></div>
+                        </a>
+        
+                        <label>
+                            {{rotaSelecionada.rota}}
+                        </label>
+        
+                        <a id="prox-page" class="prox-page" (click)="proxPagina()">
+                            <div></div>
+                        </a>
+                    </nav>
+                </div>
+                
+
+                <div class="rota" *ngIf = "rotas.length === 0" >
+                    <p>
+                        À espera de gerar rota...
+                    </p>
+                </div>
+
+                <div class="graph-container" id="canvas"></div>
+
+                <button type="button" (click)="guardarPlaneamento()" [disabled]="rotas.length === 0" ><a>Guardar Rota</a></button>
+
+            </div>    
+        </form>
+    </div>
+    <div *ngIf="sucesso" class="alert success-alert">
+        <h3>Rota Guardada com sucesso!</h3>
+        <a class="close" (click)="fecharAlerta()">&times;</a>
+    </div>
+</div>

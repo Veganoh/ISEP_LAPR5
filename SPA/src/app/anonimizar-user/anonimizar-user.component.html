@@ -1,0 +1,41 @@
+<div class="content-card">
+    <div class="card-header">
+        <h1>Users</h1>
+
+        <span>
+            Aqui podemos ver e anonimizar os utilizadores.
+        </span>
+    </div> 
+
+      
+    <div class="table-container">
+        <div class="table-header">
+        </div>
+
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Primeiro Nome</th>
+                        <th>Ultimo Nome</th>
+                        <th>Email</th>
+                        <th>Telemóvel</th>
+                        <th>Tipo de Utilizador</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of users">
+                        <td>{{user.primeiroNome}}</td>
+                        <td>{{user.ultimoNome}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.telemovel}}</td>
+                        <td>{{user.role}}</td>
+                        <td >
+                        <button class="button" *ngIf="!isAnonimizado(user)"  (click)="anonimizarUser(user)">Anonimizar</button></td>
+                    </tr>
+                </tbody>
+            </table>
+    </div>
+</div> 
+
+

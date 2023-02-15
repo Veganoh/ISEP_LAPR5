@@ -1,0 +1,165 @@
+<head>
+    <script src="https://kit.fontawesome.com/3578d459d5.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar" *ngIf="role === roles.armazens || role === roles.logistica || role === roles.admin">
+        <ul class="navbar-nav">
+            
+            <li class="logo">
+                <a routerLink="dashboard" class="nav-link">
+                    <span class="link-text">EletricGo</span>
+                    <fa-icon [icon]="faBolt" size="2x"></fa-icon>
+                </a>
+            </li>
+
+            <li *ngIf="role === roles.armazens" class="nav-item">
+                <a routerLink="criar-armazens" class="nav-link">
+                    <fa-layers [fixedWidth]="true">
+                        <fa-icon [icon]="faWarehouse" size="2x" ></fa-icon>
+                        <fa-icon [icon]="faPlus" size="2x" transform="shrink-6"></fa-icon>
+                    </fa-layers>
+                    <span class="link-text">Criar Armazens</span>
+                </a>
+            </li>
+
+            <li *ngIf="role === roles.armazens" class="nav-item">
+                <a routerLink="listar-armazens" class="nav-link">
+                    <fa-layers [fixedWidth]="true">
+                        <fa-icon [icon]="faWarehouse" size="2x" ></fa-icon>
+                        <fa-icon [icon]="faSearch" size="2x" transform="shrink-6"></fa-icon>
+                    </fa-layers>
+                    <span class="link-text">Listar Armazens</span>
+                </a>
+            </li>
+
+            <li *ngIf="role === roles.armazens" class="nav-item">
+                <a routerLink="criar-entregas" class="nav-link">
+                    <fa-layers [fixedWidth]="true">
+                        <fa-icon [icon]="faEnvelope" size="2x" ></fa-icon>
+                        <fa-icon [icon]="faPlus" size="2x" transform="shrink-6"></fa-icon>
+                    </fa-layers>
+                    <span class="link-text">Criar Entregas</span>
+                </a>
+            </li>
+
+            <li *ngIf="role === roles.armazens" class="nav-item">
+                <a routerLink="listar-entregas" class="nav-link">
+                    <fa-layers [fixedWidth]="true">
+                        <fa-icon [icon]="faEnvelope" size="2x" ></fa-icon>
+                        <fa-icon [icon]="faSearch" size="2x" transform="shrink-6"></fa-icon>
+                    </fa-layers>
+                    <span class="link-text">Listar Entregas</span>
+                </a>
+            </li>
+
+            <li *ngIf="role === roles.logistica" class="nav-item">
+                <a routerLink="criar-camioes" class="nav-link">
+                    <fa-layers [fixedWidth]="true">
+                        <fa-icon [icon]="faTruck" size="2x" ></fa-icon>
+                        <fa-icon [icon]="faPlus" size="2x" transform="shrink-6"></fa-icon>
+                    </fa-layers>
+                    <span class="link-text">Criar Camiões</span>
+                </a>
+            </li>
+
+            <li *ngIf="role === roles.logistica" class="nav-item">
+                <a routerLink="listar-camioes" class="nav-link">
+                    <fa-layers [fixedWidth]="true">
+                        <fa-icon [icon]="faTruck" size="2x" ></fa-icon>
+                        <fa-icon [icon]="faSearch" size="2x" transform="shrink-6"></fa-icon>
+                    </fa-layers>
+                    <span class="link-text">Listar Camiões</span>
+                </a>
+            </li>
+
+            <li *ngIf="role === roles.logistica" class="nav-item">
+                <a routerLink="criar-enpacotamentos" class="nav-link">
+                    <fa-layers [fixedWidth]="true">
+                        <fa-icon [icon]="faBox" size="2x" ></fa-icon>
+                        <fa-icon [icon]="faPlus" size="2x" transform="shrink-6"></fa-icon>
+                    </fa-layers>
+                    <span class="link-text">Criar Empacotamentos</span>
+                </a>
+            </li>
+
+            <li *ngIf="role === roles.logistica" class="nav-item">
+                <a routerLink="listar-enpacotamentos" class="nav-link">
+                    <fa-layers [fixedWidth]="true">
+                        <fa-icon [icon]="faBox" size="2x" ></fa-icon>
+                        <fa-icon [icon]="faSearch" size="2x" transform="shrink-6"></fa-icon>
+                    </fa-layers>
+                    <span class="link-text">Listar Empacotamentos</span>
+                </a>
+            </li>
+
+            <li *ngIf="role === roles.logistica" class="nav-item">
+                <a routerLink="criar-percursos" class="nav-link">
+                    <fa-layers [fixedWidth]="true">
+                        <fa-icon [icon]="faRoad" size="2x" ></fa-icon>
+                        <fa-icon [icon]="faPlus" size="2x" transform="shrink-6"></fa-icon>
+                    </fa-layers>
+                    <span class="link-text">Criar Percursos</span>
+                </a>
+            </li>
+
+            <li *ngIf="role === roles.logistica" class="nav-item">
+                <a routerLink="listar-percursos" class="nav-link">
+                    <fa-layers [fixedWidth]="true">
+                        <fa-icon [icon]="faRoad" size="2x" ></fa-icon>
+                        <fa-icon [icon]="faSearch" size="2x" transform="shrink-6"></fa-icon>
+                    </fa-layers>
+                    <span class="link-text">Listar Percursos</span>
+                </a>
+            </li>
+            
+
+            <li *ngIf="role === roles.logistica" class="nav-item">
+                <a routerLink="obter-planeamento" class="nav-link">
+                    <fa-icon [icon]="faCompass" size="2x" ></fa-icon>
+                    <span class="link-text">Planeamento</span>
+                </a>
+            </li>
+
+            <li *ngIf="role === roles.logistica" class="nav-item">
+                <a routerLink="listar-viagens" class="nav-link">
+                    <fa-icon [icon]="faCompass" size="2x" ></fa-icon>
+                    <span class="link-text">Listar Viagens</span>
+                </a>
+            </li>
+
+            <li *ngIf="role === roles.logistica" class="nav-item">
+                <a routerLink="rede-viaria" class="nav-link">
+                    <fa-icon [icon]="faMap" size="2x" ></fa-icon>
+                    <span class="link-text">Rede Viária</span>
+                </a>
+            </li>
+
+            <li *ngIf="role === roles.admin" class="nav-item">
+                <a routerLink="criar-user" class="nav-link">
+                        <fa-icon [icon]="faPlus" size="2x" ></fa-icon>
+                    <span class="link-text">Criar Utilizador</span>
+                </a>
+            </li>
+
+            <li *ngIf="role === roles.admin" class="nav-item">
+                <a routerLink="anonimizar-user" class="nav-link">
+                        <fa-icon [icon]="faMinus" size="2x" ></fa-icon>
+                    <span class="link-text">Anonimizar Utilizador</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a (click)="mudarUtilizador()" routerLink="/dashboard" class="nav-link">
+                    <fa-icon [icon]="faUser" size="2x" ></fa-icon>
+                    <span class="link-text">{{utilizador}}</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <main>
+
+        <router-outlet></router-outlet>
+
+    </main>
+</body>

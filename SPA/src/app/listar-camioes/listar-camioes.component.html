@@ -1,0 +1,49 @@
+<div class="content-card">
+    <div class="card-header">
+        <h1>Camiões</h1>
+
+        <span>
+            Aqui podemos ver todos os camiões existentes de momento.
+        </span>
+    </div> 
+    
+    <div class="table-container">
+        <div class ="table-header">
+            <div class="table-input-box">
+                <label for="identificador">Identificador: </label>
+                <input id = "identificador" [(ngModel)]="idFilter" (input)="filter()"/>
+            </div>
+    </div>
+
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Tara</th>
+                    <th>Carga Total</th>
+                    <th>Bateria</th>
+                    <th>Autonomia</th>
+                    <th>Carregamento Lento</th>
+                    <th>Carregamento Rápido</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let camiao of camioes" [class.ativo]='camiao.ativo.isAtivo' [class.inativo]='!camiao.ativo.isAtivo'>
+                    <td>{{camiao.id.toString()}}</td>
+                    <td>{{camiao.tara.value}}</td>
+                    <td>{{camiao.capacidadeCargaTotal.value}}</td>
+                    <td>{{camiao.camiaoBateria.value}}</td>
+                    <td>{{camiao.autonomiaCamiao.value}}</td>
+                    <td>{{camiao.carregamentoLento.value}}</td>
+                    <td>{{camiao.carregamentoRapido.value}}</td>
+                    <td>
+                        <button *ngIf="camiao.ativo.isAtivo" (click)="inibirOuAtivarCamiao(camiao)">Inibir</button>
+                        
+                        <button *ngIf="!camiao.ativo.isAtivo" (click)="inibirOuAtivarCamiao(camiao)">Ativar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

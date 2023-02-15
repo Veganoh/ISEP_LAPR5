@@ -1,0 +1,13 @@
+.table-header .table-input-box:first-child {
+  margin-right: auto;
+}
+
+.button{
+  width: 100%;
+  font-family: 'Quicksand';
+  border: none;
+  border-radius: 10px;
+  padding: 0.62rem;
+  cursor: pointer;
+  background-color: rgba(153, 176, 253, 0.548);
+}

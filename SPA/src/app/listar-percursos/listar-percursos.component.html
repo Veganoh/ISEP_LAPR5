@@ -1,0 +1,98 @@
+<div class="content-card">
+    <div class="card-header">
+        <h1>Percursos</h1>
+
+        <span>
+            Aqui podemos ver todos os percursos existentes de momento.
+        </span>
+    </div> 
+    
+    <div class="table-container">
+        <div class="table-header">
+            <div class="table-input-box">
+                <label>
+                    Mostrar
+                </label>
+
+                <select id="num-por-pagina" [(ngModel)]="numPorPagina" (change)="mudarNumPorPagina()">    
+                    <option [ngValue]="10">10</option>
+                    <option [ngValue]="15">15</option>
+                    <option [ngValue]="20">20</option>
+                    <option [ngValue]="25">25</option>
+                    <option [ngValue]="30">30</option>
+                </select>
+
+                <label>
+                    Percursos de cada vez
+                </label>
+            </div>
+
+            <div class="table-input-box">
+                <label>
+                    Armazem Origem
+                </label>
+                <input placeholder="Filtrar..." id="armazem-origem" [(ngModel)]="armazemOrigemFiltro" (input)="aplicarFiltro()"/>
+            </div>
+
+            <div class="table-input-box">
+                <label>
+                    Armazem Destino
+                </label>
+                <input placeholder="Filtrar..." id="armazem-destino" [(ngModel)]="armazemDestinoFiltro" (input)="aplicarFiltro()"/>
+            </div>
+            
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Armazem de Origem</th>
+                    <th>Armazem de Destino</th>
+                    <th>Distância</th>
+                    <th>Energia Gasta</th>
+                    <th>Tempo Base</th>
+                    <th>Tempo Extra</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let percurso of listaPercursosDto">
+                    <td>{{percurso.armazemOrigem}}</td>
+                    <td>{{percurso.armazemDestino}}</td>
+                    <td>{{percurso.distancia}} Km</td>
+                    <td>{{percurso.energiaGasta}} Kwh</td>
+                    <td>{{percurso.tempoBase}} Min</td>
+                    <td>{{percurso.tempoExtra}} Min</td>
+                </tr>
+            </tbody>
+            
+        </table>
+        <div class="table-footer">
+            <label>
+                A mostrar {{numPorPagina}} de {{countTotal}} Percursos
+            </label>
+
+            <nav class="nav-listagem">
+                <a id="first-page" class="first-page" ng-disabled="btnPrevDesativado" [class.disabled]="btnPrevDesativado" (click)="primeiraPagina()">
+                    <div></div>
+                    <div></div>
+                </a>
+
+                <a id="prev-page" class="prev-page" ng-disabled="btnPrevDesativado" [class.disabled]="btnPrevDesativado" (click)="prevPagina()">
+                    <div></div>
+                </a>
+
+                <label>
+                    Página {{paginaAtual + 1}} de {{numTotalPaginas}}
+                </label>
+
+                <a id="prox-page" class="prox-page" ng-disabled="btnProxDesativado" [class.disabled]="btnProxDesativado" (click)="proxPagina()">
+                    <div></div>
+                </a>
+
+                <a id="last-page" class="last-page" ng-disabled="btnProxDesativado" [class.disabled]="btnProxDesativado" (click)="ultimaPagina()">
+                    <div></div>
+                    <div></div>
+                </a>
+            </nav>
+        </div>
+    </div>
+</div>
